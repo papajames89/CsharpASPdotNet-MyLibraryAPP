@@ -1,0 +1,75 @@
+﻿@page
+@model WebApplication1.Pages.Forms.UpdateModel
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="container" style="padding:10px">
+    <div>
+        <div>
+            <p class="main-books">UPDATE</p>
+        </div>
+        <div id="main-divider" class="divider-custom divider-light">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star" color="white"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+    </div>
+</div>
+
+<div class="container-details">
+    <form method="post" enctype="multipart/form-data">
+        <div class="container-right">
+            <div class="form-group">
+                <div class="row">
+                    <div id="font-weight" class="col-2">
+                        <label asp-for="Books.Title"></label>
+                    </div>
+                    <div class="col-10">
+                        <input asp-for="Books.Title"  />
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="row">
+                    <div id="font-weight" class="col-2">
+                        <label asp-for="Books.Rating"></label>
+                    </div>
+                    <div class="col-10">
+                        <input asp-for="Books.Rating" class="col-6" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div id="font-weight" class="col-2">
+                        <label asp-for="Books.Description"></label>
+                    </div>
+                    <div class="">
+                        <textarea asp-for="Books.Description" class="right-textarea" style="margin-left: 15px;"></textarea>
+                    </div>
+                </div>
+            </div>
+           
+            <div>
+                <input type="file" id="file" asp-for="Upload" style="display:none;" />
+                <label for="file" style="float: left; margin: 0px; padding: 0px; height: 38px; text-align: center; padding-top: 7px; margin-right: 15px; border: 1px solid grey; width: 170px;" id="btn-details" class="btn btn-light btn-sm">Select a Book Cover</label>
+                <button asp-page-handler="Update" asp-route-id="@Model.Books.Id" class="btn btn-success form-control" style="float:right;width: 80px; margin-right:22px; padding:6px;">Update</button>
+                <a asp-page="/Forms/Index" class="btn btn-danger form-control" style="float:right;width: 80px; margin-right:22px;">Return</a>
+
+            </div>
+
+        </div>
+    </form>
+    <div class="container-left">
+        @if (Model.Books.Image != null)
+        {
+            <div class="form-group">
+                <img src="data:image/jpg;base64,@(Convert.ToBase64String(Model.Books.Image))" />
+            </div>
+        }
+    </div>
+</div>

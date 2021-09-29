@@ -1,0 +1,67 @@
+﻿@page
+@model WebApplication1.Pages.Forms.ReadModel
+@{
+    ViewData["Title"] = "Read";
+}
+
+<div class="container" style="padding:10px">
+    <div>
+        <div>
+            <p class="main-books">DETAILS</p>
+        </div>
+        <div id="main-divider" class="divider-custom divider-light">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star" color="white"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+    </div>
+</div>
+
+<div class="container-details">
+    <div class="container-right">
+        <div class="form-group">
+            <div class="row">
+                <div id="font-weight" class="col-2">
+                    <label>@Html.DisplayNameFor(model => Model.Books.Title)</label>
+                </div>
+                <div class="col-10">
+                    <label>@Html.DisplayFor(model => Model.Books.Title)</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="row">
+                <div id="font-weight" class="col-2">
+                    <label>@Html.DisplayNameFor(model => Model.Books.Rating)</label>
+                </div>
+                <div class="col-10">
+                    <label>@Html.DisplayFor(model => Model.Books.Rating)</label>
+                </div>
+            </div>
+        </div>
+        <div id="form-description" class="form-group">
+            <div class="row">
+                <div id="font-weight" class="col-2">
+                    <label>@Html.DisplayNameFor(model => Model.Books.Description)</label>
+                </div>
+            </div>
+        </div>
+        <div class="">
+            <textarea class="right-textarea" readonly>@Html.DisplayFor(model => Model.Books.Description)</textarea>
+        </div>
+        <div >
+            <a asp-page="/Forms/Index" style="float:right; width:100px; margin-top:10px; margin-right: 170px;" class="btn btn-danger form-control">Return</a>
+        </div>
+
+    </div>
+    <div class="container-left">
+        @if (Model.Books.Image != null)
+        {
+            <div class="form-group">
+                <img src="data:image/jpg;base64,@(Convert.ToBase64String(Model.Books.Image))" />
+            </div>
+        }
+    </div>
+</div>
+

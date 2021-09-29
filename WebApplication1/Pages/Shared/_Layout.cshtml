@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - WebApplication1</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+
+
+    <header style="position: relative;">
+
+        <nav id="navigator" style="position: relative;">
+            <p class="nav-p">GRZEGORZ RZESZUT</p>
+            <div class="nav-div">
+                <a class="nav-a" asp-area="" asp-page="/Privacy">ABOUT ME</a>
+            </div>
+            <div class="nav-div">
+                <a class="nav-a" asp-area="" asp-page="/Forms/Index">MY LIBRARY</a>
+            </div>
+            <div class="nav-div">
+                <a class="nav-a" asp-page="/Index">HOME</a>
+            </div>
+        </nav>
+        <div class="area">
+            <ul class="circles">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </header>
+
+
+
+    <div class="container">
+        <main role="main" class="pb-3" style="position: relative;">
+            @RenderBody()
+        </main>
+    </div>
+
+    
+
+    <footer class="footer">
+        <div class="fot-d">
+            <p>&copy; 2021 - Projekt zaliczeniowy Grzegorz Rzeszut INF NS 100067</p>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

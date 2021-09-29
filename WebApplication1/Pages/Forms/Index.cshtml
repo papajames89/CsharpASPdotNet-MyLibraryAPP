@@ -1,0 +1,63 @@
+﻿@page
+@model WebApplication1.Pages.Forms.IndexModel
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="container" style="padding:10px">
+    <div>
+        <div>
+            <p class="main-books">LIST OF BOOKS</p>
+        </div>
+        <div id="main-divider" class="divider-custom divider-light">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star" color="white"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+        <div class="main-btn-create">
+            <a asp-page="/Forms/Create" class="main-create-a">Create</a>
+        </div>
+    </div>
+</div>
+
+<form id="table-container" method="post">
+    @if (Model.Books.Count() > 0)
+    {
+        <table class="table">
+            <tr class="">
+                <th class="table-th-title">
+                    @Html.DisplayNameFor(n => n.Books.FirstOrDefault().Title)
+                </th>
+                <th class="table-th-rating">
+                    @Html.DisplayNameFor(n => n.Books.FirstOrDefault().Rating)
+                </th>
+                <th></th>
+            </tr>
+            @foreach (var item in Model.Books)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(n => item.Title)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(n => item.Rating)
+                    </td>
+                    <td class="table-td-btns">
+                        <a asp-page="Read" asp-route-id="@item.Id" id="btn-details" class="btn btn-light btn-sm">Details</a>
+                        <a asp-page="Update" asp-route-id="@item.Id" id="btn-edit" class="btn btn-success btn-sm">Edit</a>
+                        <button id="btn-delete" asp-page-handler="Delete" asp-route-id="@item.Id"
+                                onclick="return confirm('Are you sure?')"
+                                class="btn btn-danger btn-sm">
+                            Delete
+                        </button>
+
+                    </td>
+                </tr>
+            }
+        </table>
+    }
+    else
+    {
+        <p>No movies available</p>
+    }
+</form>
